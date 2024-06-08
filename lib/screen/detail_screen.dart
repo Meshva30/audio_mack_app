@@ -240,15 +240,11 @@ class _Detail_ScreenState extends State<Detail_Screen> {
                 ),
                 IconButton(
                   onPressed: () {
-                    if (musicProviderTrue.isPlaying) {
-                      musicProviderFalse.assetsAudioPlayer?.pause();
-                    } else {
-                      musicProviderFalse.assetsAudioPlayer?.play();
-                    }
                     musicProviderFalse.playAndPause();
+
                   },
                   icon: Icon(
-                    musicProviderTrue.isPlaying
+                    musicProviderTrue.isPlayingBool
                         ? Icons.pause
                         : Icons.play_circle_outline,
                     color: Colors.white,

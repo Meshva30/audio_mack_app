@@ -1,40 +1,49 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:flutter/material.dart';
 
 List SongsList = [
   {
     'title': 'Tu Maro Daryo',
     'subtitle': 'Dev',
     'img': 'assets/img/tu maro.jpg',
+
   },
   {
     'title': 'AGAR TUM SAATH',
     'subtitle': 'Ranbir Kapoor',
     'img': 'assets/img/agar.jpg',
+
   },
   {
     'title': 'Nanpan No Nedlo',
     'subtitle': 'Mahesh Vanzara ',
     'img': 'assets/img/nanpan.jpg',
+
+
   },
   {
     'title': 'Khoya Hain',
     'subtitle': 'Neeti Mohan',
     'img': 'assets/img/khoya.jpg',
+
   },
   {
     'title': 'Papa Meri Jan',
     'subtitle': 'Shakti Kapoor',
     'img': 'assets/img/papa.jpg',
+
   },
   {
     'title': 'Chandaliyo Ugyo Re',
     'subtitle': 'Aishwarya Majmudar',
     'img': 'assets/img/chandaliyo.jpg',
+
   },
   {
     'title': 'shiddat',
     'subtitle': 'Manan Bhardwaj',
-    'img': 'assets/img/shiddat.jpg'
+    'img': 'assets/img/shiddat.jpg',
+
   },
 ];
 
@@ -131,3 +140,5 @@ List<Audio> musicList2 = [
   Audio("assets/audio/apna.mp3"),
   Audio("assets/audio/tuhai.mp3"),
 ];
+
+

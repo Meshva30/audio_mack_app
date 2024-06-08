@@ -12,6 +12,7 @@ class list_tileScreen extends StatelessWidget {
   final String subtitle;
   final String img;
 
+
   @override
   Widget build(BuildContext context) {
     return ListTile(

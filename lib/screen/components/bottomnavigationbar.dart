@@ -1,3 +1,8 @@
+import 'package:audio_mack_app/screen/components/account.dart';
+import 'package:audio_mack_app/screen/components/play.dart';
+import 'package:audio_mack_app/screen/components/profile.dart';
+import 'package:audio_mack_app/screen/components/search.dart';
+import 'package:audio_mack_app/screen/components/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -6,23 +11,21 @@ import '../../provider/bottomnavigationbar.dart';
 
 SalomonBottomBar buildSalomonBottomBar(BuildContext context) {
   return SalomonBottomBar(
-    currentIndex: Provider.of<BottomProvider>(context).bottomIndex,
+    currentIndex: Provider
+        .of<BottomProvider>(context)
+        .bottomIndex,
     onTap: (value) {
       Provider.of<BottomProvider>(context, listen: false)
           .changeBottomIndex(value);
     },
     items: [
+
       /// Home
       SalomonBottomBarItem(
-        icon: InkWell(
-          onTap: () {
-            Navigator.of(context).pushNamed('/home');
-          },
-          child: Icon(
-            Icons.local_fire_department,
-            color: Colors.white,
-            size: 30,
-          ),
+        icon: Icon(
+          Icons.local_fire_department,
+          color: Colors.white,
+          size: 30,
         ),
         title: Text(
           "Discover",
@@ -33,15 +36,10 @@ SalomonBottomBar buildSalomonBottomBar(BuildContext context) {
 
       /// Likes
       SalomonBottomBarItem(
-        icon: InkWell(
-          onTap: () {
-
-          },
-          child: Icon(
-            Icons.queue_music_rounded,
-            color: Colors.white,
-            size: 30,
-          ),
+        icon: Icon(
+          Icons.queue_music_rounded,
+          color: Colors.white,
+          size: 30,
         ),
         title: Text(
           "Palylists",
@@ -59,6 +57,19 @@ SalomonBottomBar buildSalomonBottomBar(BuildContext context) {
         ),
         title: Text(
           "Search",
+          style: TextStyle(color: Colors.white),
+        ),
+        selectedColor: Colors.white,
+      ),
+
+      SalomonBottomBarItem(
+        icon: Icon(
+          Icons.account_circle_sharp,
+          color: Colors.white,
+          size: 30,
+        ),
+        title: Text(
+          "Feed",
           style: TextStyle(color: Colors.white),
         ),
         selectedColor: Colors.white,

@@ -2,10 +2,11 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:audio_mack_app/provider/musicProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../modal/list.dart';
-import 'components/bottomnavigationbar.dart';
-import 'components/container_Box.dart';
-import 'components/listtile.dart';
+import '../../modal/list.dart';
+
+import 'bottomnavigationbar.dart';
+import 'container_Box.dart';
+import 'listtile.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -17,7 +18,7 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   void initState() {
     super.initState();
-    Provider.of<MusicProvider>(context, listen: false).createMusic();
+    // changes
   }
 
   @override
@@ -91,10 +92,8 @@ class _HomescreenState extends State<Homescreen> {
               itemCount: SongsList.length,
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  Audio audio = musicList[index];
-                  MusicProviderFalse.assetsAudioPlayer?.open(
-                    audio,
-                  );
+                  MusicProviderFalse.createMusic(musicList);  // changes
+                  MusicProviderFalse.playAtIndex(index);  // changes
 
                   // Navigate to details screen
                   Navigator.of(context)
@@ -104,6 +103,7 @@ class _HomescreenState extends State<Homescreen> {
                   title: SongsList[index]['title']!,
                   subtitle: SongsList[index]['subtitle']!,
                   img: SongsList[index]['img']!,
+              
                 ),
               ),
             ),
@@ -137,10 +137,8 @@ class _HomescreenState extends State<Homescreen> {
                 itemCount: SongsList2.length,
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
-                    Audio audio = musicList1[index];
-                    MusicProviderFalse.assetsAudioPlayer?.open(
-                      audio,
-                    );
+                    MusicProviderFalse.createMusic(musicList1);  // changes
+                    MusicProviderFalse.playAtIndex(index);
                     Navigator.of(context)
                         .pushNamed('/details', arguments: SongsList2[index]);
                   },
@@ -178,13 +176,11 @@ class _HomescreenState extends State<Homescreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: SongsList1.length,
+              itemCount: SongsList2.length,
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  Audio audio = musicList2[index];
-                  MusicProviderFalse.assetsAudioPlayer!.open(
-                    audio,
-                  );
+                  MusicProviderFalse.createMusic(musicList2);  // changes
+                  MusicProviderFalse.playAtIndex(index);
                   Navigator.of(context)
                       .pushNamed('/details', arguments: SongsList1[index]);
                 },
@@ -192,6 +188,8 @@ class _HomescreenState extends State<Homescreen> {
                   title: SongsList1[index]['title'],
                   subtitle: SongsList1[index]['subtitle'],
                   img: SongsList1[index]['img'],
+
+
                 ),
               ),
             ),
@@ -225,10 +223,8 @@ class _HomescreenState extends State<Homescreen> {
                 itemCount: SongsList2.length,
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
-                    Audio audio = musicList1[index];
-                    MusicProviderFalse.assetsAudioPlayer?.open(
-                      audio,
-                    );
+                    MusicProviderFalse.createMusic(musicList);  // changes
+                    MusicProviderFalse.playAtIndex(index);
                     Navigator.of(context)
                         .pushNamed('/details', arguments: SongsList2[index]);
                   },
@@ -243,7 +239,7 @@ class _HomescreenState extends State<Homescreen> {
           ],
         ),
       ),
-      bottomNavigationBar: buildSalomonBottomBar(context),
+
     );
   }
 }
