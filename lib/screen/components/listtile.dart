@@ -12,7 +12,6 @@ class list_tileScreen extends StatelessWidget {
   final String subtitle;
   final String img;
 
-
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -26,11 +25,13 @@ class list_tileScreen extends StatelessWidget {
         ),
       ),
       title: Text(
+        overflow: TextOverflow.ellipsis,
         title,
         style: TextStyle(
             fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
       ),
       subtitle: Text(
+        overflow: TextOverflow.ellipsis,
         subtitle,
         style: TextStyle(color: Colors.white),
       ),

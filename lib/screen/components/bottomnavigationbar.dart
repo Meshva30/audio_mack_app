@@ -1,8 +1,4 @@
-import 'package:audio_mack_app/screen/components/account.dart';
-import 'package:audio_mack_app/screen/components/play.dart';
-import 'package:audio_mack_app/screen/components/profile.dart';
-import 'package:audio_mack_app/screen/components/search.dart';
-import 'package:audio_mack_app/screen/components/homeScreen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';

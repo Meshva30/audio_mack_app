@@ -1,10 +1,8 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:audio_mack_app/provider/musicProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../modal/list.dart';
 
-import 'bottomnavigationbar.dart';
 import 'container_Box.dart';
 import 'listtile.dart';
 
@@ -23,8 +21,8 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
-    MusicProvider MusicProviderTrue = Provider.of(context, listen: true);
-    MusicProvider MusicProviderFalse = Provider.of(context, listen: false);
+    final audioProvider = Provider.of<AudioPlayerProvider>(context);
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -84,26 +82,30 @@ class _HomescreenState extends State<Homescreen> {
               ],
             ),
             SizedBox(
-              height: 10,
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: SongsList.length,
-              itemBuilder: (context, index) => InkWell(
-                onTap: () {
-                  MusicProviderFalse.createMusic(musicList);  // changes
-                  MusicProviderFalse.playAtIndex(index);  // changes
+              height: 300,
+              width: double.infinity, // Adjust height as needed
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisExtent: 450,
+                ),
+                itemCount: SongsList.length,
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () {
+                    audioProvider.changeIndex(index);
+                    audioProvider.openAudio(); // changes
+                    // Navigate to details screen
+                    Navigator.of(context)
+                        .pushNamed('/details', arguments: SongsList[index]);
+                  },
+                  child: list_tileScreen(
+                    title: SongsList[index]['title'],
+                    subtitle: SongsList[index]['subtitle'],
+                    img: "${SongsList[index]['img']}",
 
-                  // Navigate to details screen
-                  Navigator.of(context)
-                      .pushNamed('/details', arguments: SongsList[index]);
-                },
-                child: list_tileScreen(
-                  title: SongsList[index]['title']!,
-                  subtitle: SongsList[index]['subtitle']!,
-                  img: SongsList[index]['img']!,
-              
+                  ),
                 ),
               ),
             ),
@@ -134,20 +136,13 @@ class _HomescreenState extends State<Homescreen> {
               height: 260,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: SongsList2.length,
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    MusicProviderFalse.createMusic(musicList1);  // changes
-                    MusicProviderFalse.playAtIndex(index);
-                    Navigator.of(context)
-                        .pushNamed('/details', arguments: SongsList2[index]);
-                  },
-                  child: containerbox(
-                    title: SongsList2[index]['title'],
-                    subtitle: SongsList2[index]['subtitle'],
-                    img: SongsList2[index]['img'],
-                  ),
-                ),
+                itemCount: SongsList1.length,
+                itemBuilder: (context, index) => containerbox(
+                    title: SongsList1[index]['title'],
+                    subtitle: SongsList1[index]['subtitle'],
+                    img: "${SongsList1[index]['img']}"),
+
+
               ),
             ),
             SizedBox(
@@ -173,73 +168,43 @@ class _HomescreenState extends State<Homescreen> {
             SizedBox(
               height: 10,
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: SongsList2.length,
-              itemBuilder: (context, index) => InkWell(
-                onTap: () {
-                  MusicProviderFalse.createMusic(musicList2);  // changes
-                  MusicProviderFalse.playAtIndex(index);
-                  Navigator.of(context)
-                      .pushNamed('/details', arguments: SongsList1[index]);
-                },
-                child: list_tileScreen(
-                  title: SongsList1[index]['title'],
-                  subtitle: SongsList1[index]['subtitle'],
-                  img: SongsList1[index]['img'],
-
-
-                ),
-              ),
-            ),
             SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Text(
-                  "TRENDIND ALBUMS",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),
-                Spacer(),
-                Text(
-                  'VIEW ALL',
-                  style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 260,
-              child: ListView.builder(
+              height: 300,
+              width: double.infinity,
+              child: GridView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: SongsList2.length,
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    MusicProviderFalse.createMusic(musicList);  // changes
-                    MusicProviderFalse.playAtIndex(index);
-                    Navigator.of(context)
-                        .pushNamed('/details', arguments: SongsList2[index]);
-                  },
-                  child: containerbox(
-                    title: SongsList2[index]['title']!,
-                    subtitle: SongsList2[index]['subtitle']!,
-                    img: SongsList2[index]['img']!,
-                  ),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisExtent: 450,
                 ),
+                itemCount: SongsList.length,
+
+                itemBuilder: (context, index) {
+
+                  return InkWell(
+
+                  onTap: () {
+
+                    audioProvider.changeIndex(index);
+                    audioProvider.openAudio();
+
+                    Navigator.of(context)
+                        .pushNamed('/details', arguments: SongsList[index]);
+                  },
+                  child: list_tileScreen(
+                    title: SongsList[index]['title'],
+                    subtitle: SongsList[index]['subtitle'],
+                    img: "${SongsList[index]['img']}",
+
+                  ),
+                );
+                },
               ),
             ),
           ],
         ),
       ),
-
     );
   }
 }

@@ -13,7 +13,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => MusicProvider(),
+          create: (context) => AudioPlayerProvider(),
         ),
         ChangeNotifierProvider(
           create: (context) => BottomProvider(),
@@ -38,6 +38,8 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => Splashscreen(),
           '/main': (context) => MainScreen(),
+          // '/home': (context) => Homescreen(),
+
           '/details': (context) => Detail_Screen(),
         });
     // home: Homescreen(),

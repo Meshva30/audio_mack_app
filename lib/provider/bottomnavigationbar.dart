@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../screen/components/homeScreen.dart';
 import '../screen/components/search.dart';
-// Import HomeScreen
+
 
 class BottomProvider with ChangeNotifier {
   int _bottomIndex = 0;

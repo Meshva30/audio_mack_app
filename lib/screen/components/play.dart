@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../modal/list.dart';
 import '../../provider/musicProvider.dart';
 import 'container_Box.dart';
+import 'listtile.dart';
 
 class Play extends StatefulWidget {
   const Play({super.key});
@@ -16,8 +17,7 @@ class Play extends StatefulWidget {
 class _PlayState extends State<Play> {
   @override
   Widget build(BuildContext context) {
-    MusicProvider MusicProviderTrue = Provider.of(context, listen: true);
-    MusicProvider MusicProviderFalse = Provider.of(context, listen: false);
+    final audioProvider = Provider.of<AudioPlayerProvider>(context);
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -52,93 +52,98 @@ class _PlayState extends State<Play> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                "POPULAR IN YOUR AREA",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              Spacer(),
-              Text(
-                'VIEW ALL',
-                style:
-                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 260,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: SongsList2.length,
-              itemBuilder: (context, index) => InkWell(
-                onTap: () {
-                  Audio audio = musicList1[index];
-                  MusicProviderTrue.assetsAudioPlayer?.open(
-                    audio,
-                  );
-                  Navigator.of(context)
-                      .pushNamed('/details', arguments: SongsList2[index]);
-                },
-                child: containerbox(
-                  title: SongsList2[index]['title'],
-                  subtitle: SongsList2[index]['subtitle'],
-                  img: SongsList2[index]['img'],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+
+            Row(
+              children: [
+                Text(
+                  "POPULAR IN YOUR AREA",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
+                Spacer(),
+                Text(
+                  'VIEW ALL',
+                  style:
+                  TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 300,
+              width: double.infinity, // Adjust height as needed
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisExtent: 450,
+                ),
+                itemCount: SongsList.length,
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () {
+                    audioProvider.changeIndex(index);
+                    audioProvider.openAudio(); // changes
+                    // Navigate to details screen
+                    Navigator.of(context)
+                        .pushNamed('/details', arguments: SongsList[index]);
+                  },
+                  child: list_tileScreen(
+                    title: SongsList[index]['title'],
+                    subtitle: SongsList[index]['subtitle'],
+                    img: "${SongsList[index]['img']}",
+                  ),
                 ),
               ),
             ),
-          ),
-          Row(
-            children: [
-              Text(
-                "POPULAR IN YOUR AREA",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
+            SizedBox(
+              height: 260,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: SongsList1.length,
+                itemBuilder: (context, index) => containerbox(
+                    title: SongsList1[index]['title'],
+                    subtitle: SongsList1[index]['subtitle'],
+                    img: "${SongsList1[index]['img']}"),
               ),
-              Spacer(),
-              Text(
-                'VIEW ALL',
-                style:
-                TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 260,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: SongsList2.length,
-              itemBuilder: (context, index) => InkWell(
-                onTap: () {
-                  Audio audio = musicList1[index];
-                  MusicProviderTrue.assetsAudioPlayer?.open(
-                    audio,
-                  );
-                  Navigator.of(context)
-                      .pushNamed('/details', arguments: SongsList2[index]);
-                },
-                child: containerbox(
-                  title: SongsList2[index]['title'],
-                  subtitle: SongsList2[index]['subtitle'],
-                  img: SongsList2[index]['img'],
+            ),
+            SizedBox(
+              height: 300,
+              width: double.infinity, // Adjust height as needed
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisExtent: 450,
+                ),
+                itemCount: SongsList.length,
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () {
+                    audioProvider.changeIndex(index);
+                    audioProvider.openAudio(); // changes
+                    // Navigate to details screen
+                    Navigator.of(context)
+                        .pushNamed('/details', arguments: SongsList[index]);
+                  },
+                  child: list_tileScreen(
+                    title: SongsList[index]['title'],
+                    subtitle: SongsList[index]['subtitle'],
+                    img: "${SongsList[index]['img']}",
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

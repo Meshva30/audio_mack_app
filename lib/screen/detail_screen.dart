@@ -1,5 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:audio_mack_app/modal/list.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,36 +15,23 @@ class Detail_Screen extends StatefulWidget {
 }
 
 class _Detail_ScreenState extends State<Detail_Screen> {
-  final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+  // final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
 
   @override
   Widget build(BuildContext context) {
-    final songIndex = ModalRoute.of(context)!.settings.arguments as Map;
-    final songProvider = Provider.of<SongProvider>(context, listen: false);
-    songProvider.initialize(context);
-
-    MusicProvider musicProviderTrue = Provider.of(context, listen: true);
-    MusicProvider musicProviderFalse = Provider.of(context, listen: false);
-
-    if (songProvider.allsong == null) {
-      return Scaffold(
-        backgroundColor: Colors.black,
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
+    final audioProvider = Provider.of<AudioPlayerProvider>(context);
 
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor:Colors.blue.shade500,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
           },
           child: Icon(
             Icons.arrow_back_ios_new_outlined,
+            size: 28,
             color: Colors.white,
           ),
         ),
@@ -51,224 +39,241 @@ class _Detail_ScreenState extends State<Detail_Screen> {
           Icon(
             Icons.playlist_play_rounded,
             color: Colors.white,
-            size: 35,
+            size: 40,
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 28),
-        child: Column(
-          children: [
-            Container(
-              height: 300,
-              width: 300,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(songProvider.allsong!['img']!),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.blue.shade500,
+              Colors.blue.shade900,
+              Colors.black,
+              Colors.black,
+              Colors.black,
+              Colors.black,
+            ],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 28),
+          child: Column(
+            children: [
+              Container(
+                height: 300,
+                width: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image:
+                        AssetImage(SongsList[audioProvider.songIndex]['img']),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Text(
-              songProvider.allsong!['title']!,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              songProvider.allsong!['subtitle']!,
-              style: TextStyle(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25),
-            ),
-            SizedBox(
-              height: 60,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Icon(
-                      Icons.favorite_border,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    Text(
-                      'Like',
-                      style: TextStyle(color: Colors.grey),
-                    )
-                  ],
+              SizedBox(
+                height: 40,
+              ),
+              Text(
+                SongsList[audioProvider.songIndex]['title'],
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Text(
+                SongsList[audioProvider.songIndex]['subtitle'],
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
+              ),
+              SizedBox(
+                height: 60,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'Like',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.playlist_add,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'PlayList',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'Mod',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.download,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'Download',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.send,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'Share',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              SliderTheme(
+                data: SliderTheme.of(context).copyWith(
+                  trackHeight: 1.5,
+                  thumbShape:
+                      const RoundSliderThumbShape(enabledThumbRadius: 6),
                 ),
-                Column(
-                  children: [
-                    Icon(
-                      Icons.playlist_add,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    Text(
-                      'PlayList',
-                      style: TextStyle(color: Colors.grey),
-                    )
-                  ],
+                child: Slider(
+                  activeColor: Colors.white,
+                  value: audioProvider.sliderValue,
+                  max: audioProvider.maxDuration > 0
+                      ? audioProvider.maxDuration
+                      : 1.0,
+                  onChanged: (value) {
+                    if (audioProvider.maxDuration > 0) {
+                      audioProvider.seek(value);
+                    }
+                  },
                 ),
-                Column(
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
-                      Icons.star,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    Text(
-                      'Mod',
-                      style: TextStyle(color: Colors.grey),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Icon(
-                      Icons.download,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    Text(
-                      'Download',
-                      style: TextStyle(color: Colors.grey),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Icon(
-                      Icons.send,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    Text(
-                      'Share',
-                      style: TextStyle(color: Colors.grey),
-                    )
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Column(
-              children: [
-                StreamBuilder(
-                  stream: _assetsAudioPlayer.currentPosition,
-                  builder: (context, snapshot) {
-                    final Duration currentPosition =
-                        snapshot.data ?? Duration.zero;
-                    return Row(
+                    Row(
                       children: [
                         Text(
-                          ' ${currentPosition.toString().split('.').first}',
-                          style: const TextStyle(
-                              fontSize: 16, color: Colors.white),
+                          '${audioProvider.sliderValue ~/ 60}:',
+                          style: TextStyle(color: Colors.white),
                         ),
-                        StreamBuilder(
-                          stream: _assetsAudioPlayer.current,
-                          builder: (context, snapshot) {
-                            final Playing? current = snapshot.data;
-                            final Duration? totalDuration =
-                                current?.audio.duration;
-                            return Row(
-                              children: [
-                                SizedBox(
-                                  width: 270,
-                                  child: Slider(
-                                    inactiveColor: Colors.grey,
-                                    activeColor: Colors.orange,
-                                    value: currentPosition.inSeconds.toDouble(),
-                                    min: 0,
-                                    max: totalDuration?.inSeconds.toDouble() ??
-                                        1,
-                                    onChanged: (value) {
-                                      _assetsAudioPlayer.seek(
-                                          Duration(seconds: value.toInt()));
-                                    },
-                                  ),
-                                ),
-                                Text(
-                                  totalDuration?.toString().split('.').first ??
-                                      '',
-                                  style: const TextStyle(fontSize: 16),
-                                ),
-                              ],
-                            );
-                          },
-                        )
+                        Text(
+                          (audioProvider.sliderValue.toInt() % 60)
+                              .toString()
+                              .padLeft(2, '0'),
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
-                    );
-                  },
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Icon(
-                  Icons.more_horiz,
-                  color: Colors.white,
-                  size: 30,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          '${audioProvider.maxDuration ~/ 60}:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          '${(audioProvider.maxDuration.toInt() % 60).toString()..padRight(2, '0')}',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {
-                    musicProviderFalse.previousSong();
-                  },
-                  icon: const Icon(
-                    Icons.skip_previous_sharp,
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Icon(
+                    Icons.more_horiz,
                     color: Colors.white,
-                    size: 45,
+                    size: 30,
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    musicProviderFalse.playAndPause();
-
-                  },
-                  icon: Icon(
-                    musicProviderTrue.isPlayingBool
-                        ? Icons.pause
-                        : Icons.play_circle_outline,
+                  IconButton(
+                    onPressed: () {
+                      audioProvider.previousAudio();
+                    },
+                    icon: const Icon(
+                      Icons.skip_previous_sharp,
+                      color: Colors.white,
+                      size: 45,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      audioProvider.togglePlayPause();
+                    },
+                    icon: Icon(
+                      audioProvider.isPlaying
+                          ? Icons.pause
+                          : Icons.play_circle_outline,
+                      color: Colors.white,
+                      size: 70,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      audioProvider.nextAudio();
+                    },
+                    icon: const Icon(
+                      Icons.skip_next,
+                      color: Colors.white,
+                      size: 45,
+                    ),
+                  ),
+                  const Icon(
+                    Icons.queue_music_sharp,
                     color: Colors.white,
-                    size: 70,
+                    size: 30,
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    musicProviderFalse.nextSong();
-                  },
-                  icon: const Icon(
-                    Icons.skip_next,
-                    color: Colors.white,
-                    size: 45,
-                  ),
-                ),
-                const Icon(
-                  Icons.queue_music_sharp,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
