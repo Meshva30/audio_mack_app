@@ -158,6 +158,7 @@ class AudioPlayerProvider with ChangeNotifier {
   bool _isPlaying = false;
   int songIndex = 0;
 
+
   double get sliderValue => _sliderValue;
   bool get isPlaying => _isPlaying;
   double get maxDuration => _maxDuration;
@@ -242,4 +243,5 @@ class AudioPlayerProvider with ChangeNotifier {
     _assetsAudioPlayer.dispose();
     super.dispose();
   }
+
 }

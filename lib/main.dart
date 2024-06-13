@@ -19,7 +19,7 @@ void main() {
           create: (context) => BottomProvider(),
         ),
         ChangeNotifierProvider(
-          create: (context) => SongProvider(),
+          create: (context) => TabBarProvider(),
         ),
       ],
       child: MyApp(),

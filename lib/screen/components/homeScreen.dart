@@ -1,6 +1,8 @@
 import 'package:audio_mack_app/provider/musicProvider.dart';
+import 'package:audio_mack_app/screen/components/containerbox.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../modal/containerlist.dart';
 import '../../modal/list.dart';
 
 import 'container_Box.dart';
@@ -62,6 +64,16 @@ class _HomescreenState extends State<Homescreen> {
         child: Column(
           children: [
             SizedBox(
+              height: 50,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: list.length,
+                itemBuilder: (context, index) =>
+                    tabbar_container(list[index], index),
+              ),
+            ),
+            SizedBox(
               height: 10,
             ),
             Row(
@@ -104,7 +116,6 @@ class _HomescreenState extends State<Homescreen> {
                     title: SongsList[index]['title'],
                     subtitle: SongsList[index]['subtitle'],
                     img: "${SongsList[index]['img']}",
-
                   ),
                 ),
               ),
@@ -141,8 +152,6 @@ class _HomescreenState extends State<Homescreen> {
                     title: SongsList1[index]['title'],
                     subtitle: SongsList1[index]['subtitle'],
                     img: "${SongsList1[index]['img']}"),
-
-
               ),
             ),
             SizedBox(
@@ -179,26 +188,21 @@ class _HomescreenState extends State<Homescreen> {
                   mainAxisExtent: 450,
                 ),
                 itemCount: SongsList.length,
-
                 itemBuilder: (context, index) {
-
                   return InkWell(
+                    onTap: () {
+                      audioProvider.changeIndex(index);
+                      audioProvider.openAudio();
 
-                  onTap: () {
-
-                    audioProvider.changeIndex(index);
-                    audioProvider.openAudio();
-
-                    Navigator.of(context)
-                        .pushNamed('/details', arguments: SongsList[index]);
-                  },
-                  child: list_tileScreen(
-                    title: SongsList[index]['title'],
-                    subtitle: SongsList[index]['subtitle'],
-                    img: "${SongsList[index]['img']}",
-
-                  ),
-                );
+                      Navigator.of(context)
+                          .pushNamed('/details', arguments: SongsList[index]);
+                    },
+                    child: list_tileScreen(
+                      title: SongsList[index]['title'],
+                      subtitle: SongsList[index]['subtitle'],
+                      img: "${SongsList[index]['img']}",
+                    ),
+                  );
                 },
               ),
             ),
