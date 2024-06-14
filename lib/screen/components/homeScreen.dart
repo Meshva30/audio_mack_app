@@ -18,6 +18,7 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   void initState() {
     super.initState();
+    // Provider.of<AudioPlayerProvider>(context,listen: false).openAudio();
     // changes
   }
 
@@ -115,7 +116,6 @@ class _HomescreenState extends State<Homescreen> {
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
                     audioProvider.changeIndex(index);
-                    audioProvider.openAudio(); // changes
                     // Navigate to details screen
                     Navigator.of(context)
                         .pushNamed('/details', arguments: SongsList[index]);

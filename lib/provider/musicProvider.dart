@@ -193,6 +193,9 @@ class AudioPlayerProvider with ChangeNotifier {
         notifyListeners();
       }
     });
+
+    play();
+    notifyListeners();
   }
 
   void play() {
