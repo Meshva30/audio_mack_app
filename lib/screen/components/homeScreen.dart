@@ -30,32 +30,32 @@ class _HomescreenState extends State<Homescreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: Image.asset('assets/img/logo.png'),
-        title: Text(
+        title: const Text(
           'DISCOVER',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+              fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
         ),
         actions: [
-          Icon(
+          const Icon(
             Icons.download,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
-          Icon(
+          const Icon(
             Icons.notifications,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
-          Icon(
+          const Icon(
             Icons.account_circle_rounded,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
         ],
       ),
@@ -73,25 +73,33 @@ class _HomescreenState extends State<Homescreen> {
                     tabbar_container(list[index], index),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                Text(
-                  "SONGS FOR YOU",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),
-                Spacer(),
-                Text(
-                  'VIEW ALL',
-                  style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.bold),
-                ),
-              ],
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                children: [
+                  Text(
+                    "SONGS FOR YOU",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                  Spacer(),
+                  Text(
+                    'VIEW ALL',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             SizedBox(
               height: 300,
@@ -99,9 +107,9 @@ class _HomescreenState extends State<Homescreen> {
               child: GridView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  mainAxisExtent: 450,
+                  mainAxisExtent: 315,
                 ),
                 itemCount: SongsList.length,
                 itemBuilder: (context, index) => InkWell(
@@ -120,31 +128,36 @@ class _HomescreenState extends State<Homescreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                Text(
-                  "TRENDIND ALBUMS",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),
-                Spacer(),
-                Text(
-                  'VIEW ALL',
-                  style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.bold),
-                ),
-              ],
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                children: [
+                  Text(
+                    "TRENDIND ALBUMS",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                  Spacer(),
+                  Text(
+                    'VIEW ALL',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
-              height: 260,
+              height: 240,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: SongsList1.length,
@@ -154,27 +167,32 @@ class _HomescreenState extends State<Homescreen> {
                     img: "${SongsList1[index]['img']}"),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                Text(
-                  "TRENDIND SONGS",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),
-                Spacer(),
-                Text(
-                  'VIEW ALL',
-                  style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.bold),
-                ),
-              ],
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                children: [
+                  Text(
+                    "TRENDIND SONGS",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                  Spacer(),
+                  Text(
+                    'VIEW ALL',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -183,9 +201,9 @@ class _HomescreenState extends State<Homescreen> {
               child: GridView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  mainAxisExtent: 450,
+                  mainAxisExtent: 315,
                 ),
                 itemCount: SongsList.length,
                 itemBuilder: (context, index) {

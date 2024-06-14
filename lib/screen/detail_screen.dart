@@ -29,14 +29,14 @@ class _Detail_ScreenState extends State<Detail_Screen> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios_new_outlined,
             size: 28,
             color: Colors.white,
           ),
         ),
         actions: [
-          Icon(
+          const Icon(
             Icons.playlist_play_rounded,
             color: Colors.white,
             size: 40,
@@ -73,30 +73,30 @@ class _Detail_ScreenState extends State<Detail_Screen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Text(
                 SongsList[audioProvider.songIndex]['title'],
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 30),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Text(
                 SongsList[audioProvider.songIndex]['subtitle'],
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
                     fontSize: 25),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
@@ -166,7 +166,7 @@ class _Detail_ScreenState extends State<Detail_Screen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               SliderTheme(
@@ -197,13 +197,13 @@ class _Detail_ScreenState extends State<Detail_Screen> {
                       children: [
                         Text(
                           '${audioProvider.sliderValue ~/ 60}:',
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                         Text(
                           (audioProvider.sliderValue.toInt() % 60)
                               .toString()
                               .padLeft(2, '0'),
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
@@ -211,11 +211,11 @@ class _Detail_ScreenState extends State<Detail_Screen> {
                       children: [
                         Text(
                           '${audioProvider.maxDuration ~/ 60}:',
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                         Text(
                           '${(audioProvider.maxDuration.toInt() % 60).toString()..padRight(2, '0')}',
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                       ],
                     ),

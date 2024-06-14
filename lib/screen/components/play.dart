@@ -25,32 +25,32 @@ class _PlayState extends State<Play> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: Image.asset('assets/img/logo.png'),
-        title: Text(
+        title: const Text(
           'PLAYLISTS',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+              fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
         ),
         actions: [
-          Icon(
+          const Icon(
             Icons.download,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
-          Icon(
+          const Icon(
             Icons.notifications,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
-          Icon(
+          const Icon(
             Icons.account_circle_rounded,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
         ],
       ),
@@ -60,30 +60,34 @@ class _PlayState extends State<Play> {
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Text(
-                    "POPULAR IN YOUR AREA",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                  Spacer(),
-                  Text(
-                    'VIEW ALL',
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: const Row(
+                  children: [
+                    Text(
+                      "POPULAR IN YOUR AREA",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                    Spacer(),
+                    Text(
+                      'VIEW ALL',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold,fontSize: 12),
+                    ),
+                  ],
+                ),
               ),
+              SizedBox(height: 10,),
               SizedBox(
                 height: 750,
                 child: GridView.builder(
                   shrinkWrap: true,
                   itemCount: SongsList.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 1/1.2,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1/1.3,
                     crossAxisCount: 2,
                   ),
                   itemBuilder: (context, index) => InkWell(
@@ -101,7 +105,7 @@ class _PlayState extends State<Play> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               // SizedBox(

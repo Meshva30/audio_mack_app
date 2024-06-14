@@ -17,28 +17,28 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: Image.asset('assets/img/logo.png'),
-        title: Text(
+        title: const Text(
           'MY LIBRARY',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+              fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
         ),
-        actions: [
+        actions: const [
           Icon(
             Icons.download,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
           SizedBox(width: 5),
           Icon(
             Icons.notifications,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
           SizedBox(width: 5),
           Icon(
             Icons.account_circle_rounded,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
         ],
       ),
@@ -48,98 +48,103 @@ class Profile extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             children: [
-              ListTile(
+              const ListTile(
                 leading: Icon(
                   Icons.download,
-                  size: 28,
+                  size: 25,
                   color: Colors.orange,
                 ),
                 title: Text(
                   'Downloads',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.grey,
+                  size: 20,
                 ),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(
                   Icons.favorite_border,
-                  size: 28,
+                  size: 25,
                   color: Colors.orange,
                 ),
                 title: Text(
                   'Likes',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.grey,
+                  size: 20,
                 ),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(
                   Icons.playlist_add,
-                  size: 28,
+                  size: 25,
                   color: Colors.orange,
                 ),
                 title: Text(
                   'Playlists',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.grey,
+                  size: 20,
                 ),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(
                   Icons.account_circle_sharp,
-                  size: 28,
+                  size: 25,
                   color: Colors.orange,
                 ),
                 title: Text(
                   'My Profile',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.grey,
+                  size: 20,
                 ),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(
                   Icons.upload,
-                  size: 28,
+                  size: 25,
                   color: Colors.orange,
                 ),
                 title: Text(
                   'Uploads',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.grey,
+                  size: 20,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 15),
                 child: Row(
                   children: [
                     Text(
@@ -147,13 +152,13 @@ class Profile extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                          fontSize: 16),
                     ),
                     Spacer(),
                     Text(
                       'VIEW ALL',
                       style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
+                          color: Colors.grey, fontWeight: FontWeight.bold,fontSize: 12),
                     ),
                   ],
                 ),
@@ -163,8 +168,8 @@ class Profile extends StatelessWidget {
                 child: GridView.builder(
 
                   itemCount: SongsList.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 1/1.2,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1/1.3,
                     crossAxisCount: 2,
                   ),
                   itemBuilder: (context, index) => InkWell(

@@ -4,6 +4,9 @@ import 'package:audio_mack_app/provider/musicProvider.dart';
 import 'package:audio_mack_app/screen/MainScreen.dart';
 import 'package:audio_mack_app/screen/detail_screen.dart';
 import 'package:audio_mack_app/screen/components/homeScreen.dart';
+import 'package:audio_mack_app/screen/intro1.dart';
+import 'package:audio_mack_app/screen/intro2.dart';
+import 'package:audio_mack_app/screen/intro3.dart';
 import 'package:audio_mack_app/screen/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -37,11 +40,13 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => Splashscreen(),
+          '/intro1': (context) => Intro1(),
+          '/intro2': (context) => Intro2(),
+          '/intro3': (context) => Intro3(),
           '/main': (context) => MainScreen(),
-          // '/home': (context) => Homescreen(),
-
           '/details': (context) => Detail_Screen(),
         });
+
     // home: Homescreen(),
   }
 }

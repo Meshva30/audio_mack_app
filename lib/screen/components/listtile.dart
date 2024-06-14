@@ -27,17 +27,17 @@ class list_tileScreen extends StatelessWidget {
       title: Text(
         overflow: TextOverflow.ellipsis,
         title,
-        style: TextStyle(
-            fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
+        style: const TextStyle(
+            fontWeight: FontWeight.bold, color: Colors.white, fontSize: 15),
       ),
       subtitle: Text(
         overflow: TextOverflow.ellipsis,
         subtitle,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.grey,),
       ),
       trailing: IconButton(
         onPressed: () {},
-        icon: Icon(
+        icon: const Icon(
           Icons.more_vert_sharp,
           color: Colors.white,
         ),

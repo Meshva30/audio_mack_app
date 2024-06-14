@@ -6,8 +6,8 @@ class Splashscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, '/main');
+    Timer(Duration(seconds: 5), () {
+      Navigator.pushReplacementNamed(context, '/intro1');
     });
     return Scaffold(
       backgroundColor: Colors.black,

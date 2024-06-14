@@ -18,69 +18,69 @@ SalomonBottomBar buildSalomonBottomBar(BuildContext context) {
 
       /// Home
       SalomonBottomBarItem(
-        icon: Icon(
+        icon: const Icon(
           Icons.local_fire_department,
           color: Colors.white,
-          size: 30,
+          size: 25,
         ),
-        title: Text(
+        title: const Text(
           "Discover",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white,fontSize: 12),
         ),
         selectedColor: Colors.white,
       ),
 
       /// Likes
       SalomonBottomBarItem(
-        icon: Icon(
+        icon: const Icon(
           Icons.queue_music_rounded,
           color: Colors.white,
-          size: 30,
+          size: 25,
         ),
-        title: Text(
-          "Palylists",
-          style: TextStyle(color: Colors.white),
+        title: const Text(
+          "Playlist",
+          style: TextStyle(color: Colors.white,fontSize: 12,),
         ),
         selectedColor: Colors.white,
       ),
 
       /// Search
       SalomonBottomBarItem(
-        icon: Icon(
+        icon: const Icon(
           Icons.search,
           color: Colors.white,
-          size: 30,
+          size: 25,
         ),
-        title: Text(
+        title: const Text(
           "Search",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white,fontSize: 12),
         ),
         selectedColor: Colors.white,
       ),
 
       SalomonBottomBarItem(
-        icon: Icon(
+        icon: const Icon(
           Icons.account_circle_sharp,
           color: Colors.white,
-          size: 30,
+          size: 25,
         ),
-        title: Text(
+        title: const Text(
           "Feed",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white,fontSize: 12),
         ),
         selectedColor: Colors.white,
       ),
 
       /// Profile
       SalomonBottomBarItem(
-          icon: Icon(
+          icon: const Icon(
             Icons.person,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
-          title: Text(
+          title: const Text(
             "Profile",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white,fontSize: 12),
           ),
           selectedColor: Colors.orange,
           unselectedColor: Colors.white),

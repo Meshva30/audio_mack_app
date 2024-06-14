@@ -19,14 +19,14 @@ class containerbox extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.all(10),
-          height: 170,
-          width: 200,
+          margin: const EdgeInsets.all(10),
+          height: 150,
+          width: 170,
           decoration: BoxDecoration(
             image: DecorationImage(fit: BoxFit.cover, image: AssetImage(img)),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 9,
         ),
         Padding(
@@ -34,17 +34,17 @@ class containerbox extends StatelessWidget {
           child: Text(
             textAlign: TextAlign.center,
             title,
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
+            style: const TextStyle(
+                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             subtitle,
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.white,
+            style: const TextStyle(
+
+              color: Colors.grey,
             ),
           ),
         ),

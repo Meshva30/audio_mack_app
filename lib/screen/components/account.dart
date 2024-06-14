@@ -10,41 +10,41 @@ class Account extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: Image.asset('assets/img/logo.png'),
-        title: Text(
+        title: const Text(
           'FEED',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+              fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
         ),
         actions: [
-          Icon(
+          const Icon(
             Icons.download,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
-          Icon(
+          const Icon(
             Icons.notifications,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
-          Icon(
+          const Icon(
             Icons.account_circle_rounded,
             color: Colors.white,
-            size: 30,
+            size: 25,
           ),
         ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 170,
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 150,
             ),
             child: Icon(
               Icons.person_outline_sharp,
@@ -52,34 +52,34 @@ class Account extends StatelessWidget {
               size: 70,
             ),
           ),
-          Text(
+          const Text(
             'The Feed',
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 25),
           ),
-          Text(
+          const Text(
             textAlign: TextAlign.center,
             ' Follow friends and artists to \n discover new music and be the first \n to be notified when new releases \n deop.',
             style: TextStyle(color: Colors.grey, fontSize: 18),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            height: 60,
-            width: 310,
+            height: 50,
+            width: 280,
             decoration: BoxDecoration(
                 color: Colors.orange,
                 borderRadius: BorderRadius.circular(30)),
-            child: Center(
+            child: const Center(
               child: Text(
                 'Create your feed',
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20),
+                    fontSize: 18),
               ),
             ),
           )

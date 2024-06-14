@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget tabbar_container(String text, int index) {
   return Container(
-    margin: EdgeInsets.all(5),
+    margin: const EdgeInsets.all(5),
     height: 40,
     width: 85,
     decoration: BoxDecoration(
