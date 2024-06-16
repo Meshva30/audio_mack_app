@@ -59,222 +59,220 @@ class _Detail_ScreenState extends State<Detail_Screen> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 28),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  height: 300,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image:
-                          AssetImage(SongsList[audioProvider.songIndex]['img']),
-                    ),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 28),
+          child: Column(
+            children: [
+              Container(
+                height: 250,
+                width: 250,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image:
+                        AssetImage(SongsList[audioProvider.songIndex]['img']),
                   ),
                 ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Text(
-                  SongsList[audioProvider.songIndex]['title'],
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  SongsList[audioProvider.songIndex]['subtitle'],
-                  style: const TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25),
-                ),
-                const SizedBox(
-                  height: 60,
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.favorite_border,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        Text(
-                          'Like',
-                          style: TextStyle(color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.playlist_add,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        Text(
-                          'PlayList',
-                          style: TextStyle(color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        Text(
-                          'Mod',
-                          style: TextStyle(color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.download,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        Text(
-                          'Download',
-                          style: TextStyle(color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.send,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        Text(
-                          'Share',
-                          style: TextStyle(color: Colors.grey),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                    trackHeight: 1.5,
-                    thumbShape:
-                        const RoundSliderThumbShape(enabledThumbRadius: 6),
-                  ),
-                  child: Slider(
-                    activeColor: Colors.white,
-                    value: audioProvider.sliderValue,
-                    max: audioProvider.maxDuration > 0
-                        ? audioProvider.maxDuration
-                        : 1.0,
-                    onChanged: (value) {
-                      if (audioProvider.maxDuration > 0) {
-                        audioProvider.seek(value);
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Text(
+                SongsList[audioProvider.songIndex]['title'],
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                SongsList[audioProvider.songIndex]['subtitle'],
+                style: const TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            '${audioProvider.sliderValue ~/ 60}:',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            (audioProvider.sliderValue.toInt() % 60)
-                                .toString()
-                                .padLeft(2, '0'),
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ],
+                      Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                        size: 30,
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            '${audioProvider.maxDuration ~/ 60}:',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            '${(audioProvider.maxDuration.toInt() % 60).toString()..padRight(2, '0')}',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
+                      Text(
+                        'Like',
+                        style: TextStyle(color: Colors.grey),
+                      )
                     ],
                   ),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.playlist_add,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'PlayList',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'Mod',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.download,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'Download',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.send,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Text(
+                        'Share',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SliderTheme(
+                data: SliderTheme.of(context).copyWith(
+                  trackHeight: 1.5,
+                  thumbShape:
+                      const RoundSliderThumbShape(enabledThumbRadius: 6),
                 ),
-                const SizedBox(
-                  height: 40,
+                child: Slider(
+                  activeColor: Colors.white,
+                  value: audioProvider.sliderValue,
+                  max: audioProvider.maxDuration > 0
+                      ? audioProvider.maxDuration
+                      : 1.0,
+                  onChanged: (value) {
+                    if (audioProvider.maxDuration > 0) {
+                      audioProvider.seek(value);
+                    }
+                  },
                 ),
-                Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Icon(
-                      Icons.more_horiz,
-                      color: Colors.white,
-                      size: 30,
+                    Row(
+                      children: [
+                        Text(
+                          '${audioProvider.sliderValue ~/ 60}:',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          (audioProvider.sliderValue.toInt() % 60)
+                              .toString()
+                              .padLeft(2, '0'),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
-                    IconButton(
-                      onPressed: () {
-                        audioProvider.previousAudio();
-                      },
-                      icon: const Icon(
-                        Icons.skip_previous_sharp,
-                        color: Colors.white,
-                        size: 45,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        audioProvider.togglePlayPause();
-                      },
-                      icon: Icon(
-                        audioProvider.isPlaying
-                            ? Icons.pause
-                            : Icons.play_circle_outline,
-                        color: Colors.white,
-                        size: 70,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        audioProvider.nextAudio();
-                      },
-                      icon: const Icon(
-                        Icons.skip_next,
-                        color: Colors.white,
-                        size: 45,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.queue_music_sharp,
-                      color: Colors.white,
-                      size: 30,
+                    Row(
+                      children: [
+                        Text(
+                          '${audioProvider.maxDuration ~/ 60}:',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          '${(audioProvider.maxDuration.toInt() % 60).toString()..padRight(2, '0')}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Icon(
+                    Icons.more_horiz,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      audioProvider.previousAudio();
+                    },
+                    icon: const Icon(
+                      Icons.skip_previous_sharp,
+                      color: Colors.white,
+                      size: 45,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      audioProvider.togglePlayPause();
+                    },
+                    icon: Icon(
+                      audioProvider.isPlaying
+                          ? Icons.pause
+                          : Icons.play_circle_outline,
+                      color: Colors.white,
+                      size: 70,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      audioProvider.nextAudio();
+                    },
+                    icon: const Icon(
+                      Icons.skip_next,
+                      color: Colors.white,
+                      size: 45,
+                    ),
+                  ),
+                  const Icon(
+                    Icons.queue_music_sharp,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

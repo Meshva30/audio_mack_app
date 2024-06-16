@@ -172,7 +172,7 @@ class AudioPlayerProvider with ChangeNotifier {
     await _assetsAudioPlayer.open(
       Audio(SongsList[songIndex]['song']),
       autoStart: true,
-      showNotification: true,
+      // showNotification: true,
     );
     _isPlaying = true;
     notifyListeners();

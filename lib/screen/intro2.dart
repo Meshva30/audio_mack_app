@@ -39,7 +39,7 @@ class Intro2 extends StatelessWidget {
                 height: 30,
               ),
               Container(
-                height: 350,
+                height: 250,
                 width: 350,
                 decoration: const BoxDecoration(
 
@@ -48,7 +48,7 @@ class Intro2 extends StatelessWidget {
                         image: AssetImage('assets/img/intro.png'))),
               ),
               const SizedBox(
-                height: 20,
+                height:110,
               ),
               const Text(
                 textAlign: TextAlign.center,

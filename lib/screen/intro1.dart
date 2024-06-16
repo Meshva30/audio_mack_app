@@ -25,7 +25,7 @@ class Intro1 extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  fontSize: 22,
                   color: Colors.white),
             ),
             const SizedBox(
@@ -41,7 +41,7 @@ class Intro1 extends StatelessWidget {
                 children: [
                   TextSpan(
                       text:
-                          'We need your permission to serve \n relevant,personailzed ads, support your \n favorite artists,and '),
+                          'We need your permission to serve \n relevant,personailzed ads, support your \n favorite artists,and ',style: TextStyle(color: Colors.grey)),
                   TextSpan(
                       text: 'Keep our platform \n FREE.',
                       style: TextStyle(color: Colors.orange,fontSize: 18,fontWeight: FontWeight.w500)),

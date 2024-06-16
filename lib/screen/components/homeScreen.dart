@@ -1,5 +1,7 @@
 import 'package:audio_mack_app/provider/musicProvider.dart';
 import 'package:audio_mack_app/screen/components/containerbox.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../modal/containerlist.dart';
@@ -37,7 +39,7 @@ class _HomescreenState extends State<Homescreen> {
               fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
         ),
         actions: [
-          const Icon(
+          Icon(
             Icons.download,
             color: Colors.white,
             size: 25,
@@ -116,6 +118,7 @@ class _HomescreenState extends State<Homescreen> {
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
                     audioProvider.changeIndex(index);
+                    audioProvider.openAudio();
                     // Navigate to details screen
                     Navigator.of(context)
                         .pushNamed('/details', arguments: SongsList[index]);
@@ -224,9 +227,59 @@ class _HomescreenState extends State<Homescreen> {
                 },
               ),
             ),
+
           ],
         ),
       ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          alignment: Alignment.center,
+          height: 65,
+          width: 400,
+          decoration: BoxDecoration(color: Colors.grey.shade900,borderRadius: BorderRadius.circular(8)),
+          // Example semi-transparent color
+          child: ListTile(
+            leading: Container(
+              height: 55,
+              width: 55,
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                    image: AssetImage("assets/img/tu maro.jpg"),
+                    fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(7),
+              ),
+            ),
+            title: const Text(
+              "Tu Maro Daryo",
+              style: TextStyle(fontWeight: FontWeight.w700,color: Colors.white),
+            ),
+            subtitle: const Text("Dev"),
+            trailing: FittedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+
+                  CupertinoButton(
+                    onPressed: () {
+                    },
+                    padding: EdgeInsets.zero,
+                    child: const Icon(Icons.play_circle_outline_sharp,size: 30,color: Colors.white,),
+                  ),
+                  CupertinoButton(
+                    onPressed: () {
+                    },
+                    padding: EdgeInsets.zero,
+                    child: const Icon(Icons.play_arrow,size: 30,color: Colors.white,),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation:
+      FloatingActionButtonLocation.miniCenterDocked,
     );
   }
 }
